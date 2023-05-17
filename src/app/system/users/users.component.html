@@ -1,0 +1,92 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">Users</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">NAME*</label>
+                        <input type="text" class="w-100 form-control" formControlName="name">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please
+                            Enter Name</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">USERNAME*</label>
+                        <input type="text" class="w-100 form-control" formControlName="username">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.username.touched && formdata.controls.username.invalid">Please
+                            Enter Username</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">PASSWORD*</label>
+                        <input type="text" class="w-100 form-control" formControlName="password">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please
+                            Enter Password</span><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label class="form-label fs-6">SELECT EMPLOYEE*</label>
+                        <select class="form-select" formControlName="employeeid">
+                            <option value=0>Employees</option>
+                            <option *ngFor="let emp of employees" value="{{emp.id}}">{{emp.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="form-label fs-6">SELECT ROLE*</label>
+                        <select class="form-select" formControlName="roleid">
+                            <option value=0>Roles</option>
+                            <option *ngFor="let role of roles" value="{{role.id}}">{{role.name}}</option>
+                        </select>
+
+                    </div>
+                </div><br>
+                <input type="submit" value="SAVE" class="btn btn-success text-capitalize" [disabled]="!formdata.valid">
+                <input type="reset" value="CLEAR" (click)="clear()" class="btn btn-info text-capitalize mx-2"
+                    [disabled]="!formdata.valid">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="tabs-animation">
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <table style="width: 100%;" class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Employeename</th>
+                        <th>Rolename</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index">
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="delete(user.id)">DELETE</button>
+                            <button type="button" class="btn btn-success mx-2 btn-sm"
+                                (click)="edit(user.id)">EDIT</button>
+                        </td>
+                        <td>{{i + 1}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.password}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

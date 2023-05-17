@@ -1,0 +1,108 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">E-MEDIA RO LIST</div>
+        </div>
+    </div>
+    <br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">STATUS*</label>
+                        <select class="form-select">
+                            <option value="">All Billed & Not Billed</option>
+                            <option *ngFor="let status of status">{{status}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">MEDIA*</label>
+                        <select class="form-select">
+                            <option value="">MEDIA</option>
+                            <option *ngFor="let emedia of emedias" value="{{emedia.id}}">{{emedia.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">CLIENT*</label>
+                        <select class="form-select">
+                            <option value="">SELECT CLIENT</option>
+                            <option *ngFor="let client of clients">{{client.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">PAY STATUS*</label>
+                        <select class="form-select">
+                            <option value="">All</option>
+                            <option *ngFor="let status of paystatus">{{status}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3"><br>
+                        <label>FROM DATE*</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-lg-3"><br>
+                        <label>TO DATE*</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-lg-3"><br>
+                        <label>SEARCH INVOICE NO*</label>
+                        <input type="search" class="form-control">
+                    </div>
+                    <div class="col-lg-3 mt-5">
+                        <button type="button" class="btn btn-info mx-1">SHOW</button>
+                        <button type="reset" (click)="clear()" class="btn btn-danger mx-2">RESET</button>
+                        <button type="button" routerLink="/emedia/releaseorder" class="btn btn-primary">ADD NEW RO</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="tabs-animation">
+    <h4 class="text-danger">Total Records : 1</h4>
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <div class="row mt-2">
+                <div class="col-12">
+                    <table class="mb-0 table table-bordered table-hover">
+                        <tr>
+                            <th>Actions</th>
+                            <th>RO Date</th>
+                            <th>Invoice No</th>
+                            <th>Invoice Date</th>
+                            <th>Client</th>
+                            <th>Publication</th>
+                            <th>RO Amount</th>
+                            <th>Discount</th>
+                            <th>GST</th>
+                            <th>Invoice Amount</th>
+                            <th>Paid Remaining</th>
+                        </tr>
+                        <tr>
+                            <td>
+                               <button type="button" class="btn border border-success btn-outline-success mx-1">EDIT</button>
+                               <button type="button" class="btn border border-danger btn-outline-danger mx-1">DELETE</button>
+                               <button type="button" class="btn border border-primary btn-outline-primary mx-1">PRINT RO</button>
+                            </td>
+                            <td>21/05/2023</td>
+                            <td>898484844</td>
+                            <td>21/05/2023</td>
+                            <td>XYZ</td>
+                            <td>E-Media</td>
+                            <td>0.00</td>
+                            <td>/</td>
+                            <td>9%</td>
+                            <td>/</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

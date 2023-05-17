@@ -1,0 +1,326 @@
+<div class="app-page-title">
+    <form action="">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="fs-3">E-MEDIA RO</div>
+            </div>
+        </div>
+        <br>
+        <div class="card shadow">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">RO NO</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">RO DATE</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">MEDIA BILL NUMBER</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">MEDIA BILL AMOUNT</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4"><br>
+                        <label>SELECT CLIENT</label>
+                        <select class="form-select">
+                            <option value="">CLIENT</option>
+                            <option *ngFor="let client of clients" value="">{{client.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4"><br>
+                        <label>MEDIA</label>
+                        <select class="form-select">
+                            <option value="">MEDIA</option>
+                            <option *ngFor="let emedia of emedia" value="{{emedia.id}}">{{emedia.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4"><br>
+                        <label>BROADCAST CENTER</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6"><br>
+                        <label>LANGUAGE</label>
+                        <select class="form-select">
+                            <option value="">LANGUAGE</option>
+                            <option *ngFor="let language of languages" value="{{language}}">{{language}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6"><br>
+                        <label class="form-label fs-6">CAPTION</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                <div class="col-lg-2"><br>
+                    <label class="form-label fs-6">TOTAL SPOTS</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label class="form-label fs-6">TOTAL CHARGES</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label class="form-label fs-6">COMMISSION(%)</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-3"><br>
+                    <label class="form-label fs-6">COMMISSION AMOUNT</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-3"><br>
+                    <label>GST TAX TYPE</label>
+                    <select class="form-select">
+                        <option value="">GST TAX TYPE</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"><br>
+                    <label>CGST %</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label>CGST AMOUNT</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label>SGST %</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label>SGST AMOUNT</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label>IGST %</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-2"><br>
+                    <label>IGST AMOUNT</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4"><br>
+                    <label>CHEQUE NO</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-4"><br>
+                    <label>CHEQUE DATE</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-4"><br>
+                    <label>BANK NAME</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6"><br>
+                    <label class="form-label fs-6">RO BILL AMOUNT</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-6"><br>
+                    <label class="form-label fs-6">INSTRUCTIONS</label>
+                    <input type="text" class="form-control">
+                </div>
+
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success mx-3">SAVE</button>
+                <button type="button" class="btn btn-danger">CANCEL</button>
+            </div>  -->
+
+            </div>
+        </div>
+
+        <div class="tabs-animation">
+            <div class="card mb-3 shadow">
+                <div class="card-body">
+                    <div class="mt-2">
+                        <div class="col-12">
+                            <table class="mb-0 table table-bordered table-secondary table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>From To Date</th>
+                                        <th class="p-3">Days</th>
+                                        <th>From Time</th>
+                                        <th>To Time</th>
+                                        <th>Daily Spots</th>
+                                        <th>Total Spots</th>
+                                        <th>Bonus/Paid</th>
+                                        <th>Caption</th>
+                                        <th>Charges (10 sec)</th>
+                                        <th>Duration (in sec)</th>
+                                        <th>Total Charges</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tr *ngFor="let detail of details; let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td class="w-100">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="date" class="form-control"
+                                                    [(ngModel)]="details[i].startdate" (input)="fromtodate($event)"
+                                                    [ngModelOptions]="{standalone : true}">
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="date" class="form-control" [(ngModel)]="details[i].enddate"
+                                                    [ngModelOptions]="{standalone : true}" (input)="fromtodate($event)">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="number" placeholder="Days" (input)="valuechanged(i, 'days')"
+                                            class="form-control" [(ngModel)]="details[i].days"
+                                            [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="time" class="form-control" [(ngModel)]="details[i].fromtime"
+                                            [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="time" class="form-control" [(ngModel)]="details[i].totime"
+                                            [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" [(ngModel)]="details[i].dailyspots"
+                                            [ngModelOptions]="{standalone : true}"
+                                            (input)="valuechanged(i, 'dailyspots')">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" [(ngModel)]="details[i].totalspots"
+                                            [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td class="w-100">
+                                        <select class="form-select" [(ngModel)]="details[i].bonuspaid"
+                                            [ngModelOptions]="{standalone : true}">
+                                            <option value="">Paid</option>
+                                            <option value="">Bonus</option>
+                                        </select>
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="text" class="form-control" [(ngModel)]="details[i].caption"
+                                            [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="number" (input)="valuechanged(i, 'charges')" class="form-control"
+                                            [(ngModel)]="details[i].charges" [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="number" (input)="valuechanged(i, 'duration')" class="form-control"
+                                            [(ngModel)]="details[i].duration" [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                    <td class="w-100">
+                                        <input type="number" class="form-control" [(ngModel)]="details[i].totalcharges"
+                                            [ngModelOptions]="{standalone : true}">
+                                    </td>
+                                </tr>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5">
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                (click)="adddetail(2)">Add
+                                                Row</button>
+                                        </th>
+                                        <th class="text-center">
+                                            {{totalspots}}
+                                        </th>
+                                        <th colspan="5">
+
+                                        </th>
+                                        <th class="text-center">
+                                            {{totalcharges | currency : "INR"}}
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card shadow" style="margin-bottom:100px">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">COMMISSION PERCENTAGE</label>
+                        <input type="number" class="form-control" (input)="compercentage($event)">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label fs-6">COMMISSION AMOUNT</label>
+                        <input type="number" readonly class="form-control" value="{{comissionpercentage}}">
+                    </div>
+                    <div class="col-lg-3">
+                        <label>GST</label>
+                        <select class="form-select" (change)="changegst($event)">
+                            <option value="">GST</option>
+                            <option *ngFor="let gst of gsties" value="{{gst.id}}">{{gst.title}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1">
+                        <label>CGST()</label>
+                        <input type="number" readonly class="form-control w-100" value="{{calculatedgst?.cgst}}">
+                    </div>
+                    <div class="col-lg-1">
+                        <label>SGST(9%)</label>
+                        <input type="number" readonly class="form-control" value="{{calculatedgst?.sgst}}">
+                    </div>
+                    <div class="col-lg-1">
+                        <label>IGST(9%)</label>
+                        <input type="number" readonly class="form-control" value="{{calculatedgst?.igst}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4"><br>
+                        <label>CHEQUE NO</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-4"><br>
+                        <label>CHEQUE DATE</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-lg-4"><br>
+                        <label>BANK NAME</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6"><br>
+                        <label class="form-label fs-6">RO BILL AMOUNT</label>
+                        <input type="number" class="form-control" value="{{calculatedgst}}">
+                    </div>
+                    <div class="col-lg-6"><br>
+                        <label class="form-label fs-6">INSTRUCTIONS</label>
+                        <input type="text" class="form-control">
+                    </div>
+
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success mx-2">SAVE</button>
+                    <button type="button" class="btn btn-primary" (click)="Print()">PRINT</button>
+                    <button type="button" class="btn btn-danger mx-2">CANCEL</button>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </form>
+</div>

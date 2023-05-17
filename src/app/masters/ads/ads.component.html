@@ -1,0 +1,56 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">ADS</div>
+        </div>
+        <div style="margin-left: 1050px;">
+            <button type="button" routerLink="/masters/ad" class="btn btn-primary">ADD*</button>
+        </div>
+    </div>
+    <br>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <label class="form-label fs-6">SELECT MONTH*</label>
+                    <select class="form-select">
+                        <option value="">SELECT MONTH</option>
+                        <option *ngFor="let month of months" value="{{month.id}}">{{month}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <label class="form-label fs-6">SELECT YEAR*</label>
+                    <select class="form-select">
+                        <option value="">SELECT YEAR</option>
+                        <option *ngFor="let years of years" value="{{years.id}}" >{{years}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tabs-animation mb-5">
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <div class="row mt-2">
+                <div class="col-12">
+                    <table class="mb-0 table table-bordered table-hover">
+                        <tr>
+                            <th style="width:100px;" class="text-center" *ngFor="let day of api.weekdays;">
+                                {{day}}
+                            </th>
+                        </tr>
+                        <tr *ngFor="let week of monthCalendar; let i = index;">
+                            <td class="text-center" style="height:100px;position: relative;"
+                                *ngFor="let day of week; let j = index;">
+                                <span style="position: absolute; top:1px;left:1px;" *ngIf="day != 0"> {{ day }}</span>
+                                <button type="button" class="btn btn-warning" *ngIf="dateRecords[i][j] != 0">Reasons:{{dateRecords[i][j]}}</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

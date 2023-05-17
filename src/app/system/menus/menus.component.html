@@ -1,0 +1,120 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">Menus</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">TITLE*</label>
+                        <input type="text" class="w-100 form-control" formControlName="title">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.title.touched && formdata.controls.title.invalid">Please
+                            Enter Title</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">LINK*</label>
+                        <input type="text" class="w-100 form-control" formControlName="link">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.link.touched && formdata.controls.link.invalid">Please
+                            Enter Link</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">ICON*</label>
+                        <input type="text" class="w-100 form-control" formControlName="icon">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.icon.touched && formdata.controls.icon.invalid">Please Enter Your
+                            Icon</span><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">SR NO*</label>
+                        <input type="number" class="w-100 form-control" formControlName="srno">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.srno.touched && formdata.controls.srno.invalid">Please Enter SR
+                            Number</span><br>
+                    </div>
+                    <div class="col-lg-2 ml-5">
+                        <label>CAN HAVE CHILD?</label><br>
+                        <label class="switch">
+                            <input formControlName="canhavechild" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-lg-5">
+                        <label class="form-label">PARENT MENU ID*</label><br>
+                        <select class="form-select" formControlName="parentmenuid">
+                            <option value=0>Select Parent Menu</option>
+                            <option *ngFor="let menu of parentmenus" value="{{menu.id}}">{{menu.title}}</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" value="SAVE" class="btn btn-success text-capitalize" [disabled]="!formdata.valid">
+                <input type="reset" value="CLEAR" (click)="clear()" class="btn btn-info text-capitalize mx-2"
+                    [disabled]="!formdata.valid">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <div class="tabs-animation">
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <table style="width: 100%;" class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Link</th>
+                        <th>SR No</th>
+                        <th>Icon</th>
+                        <th>Can Have Child?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let menu of menus; let i = index">
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="delete(menu.id)">DELETE</button>
+                            <button type="button" class="btn btn-success mx-2 btn-sm"
+                                (click)="edit(menu.id)">EDIT</button>
+                        </td>
+                        <td>{{i + 1}}</td>
+                        <td>{{menu.title}}</td>
+                        <td>{{menu.link}}</td>
+                        <td>{{menu.srno}}</td>
+                        <td>{{menu.icon}}</td>
+                        <td>{{menu.canhavechild}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div> -->
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <ul>
+            <li class="m-2" *ngFor="let pmenu of parentmenus;">
+                {{ pmenu.title }}
+                <button class="btn btn-primary btn-sm mr-2" (click)="edit(pmenu.id)"><i
+                        class="pe-7s-tools btn-icon-wrapper"></i></button>
+                <button class="btn btn-danger btn-sm" (click)="delete(pmenu.id)">
+                    <i class="pe-7s-trash btn-icon-wrapper"></i></button>
+                <ul>
+                    <li class="m-2" *ngFor="let menu of pmenu.childs;">
+                        {{ menu.title }}
+                        <button class="btn btn-primary btn-sm mr-2" (click)="edit(menu.id)"><i
+                                class="pe-7s-tools btn-icon-wrapper"></i></button>
+                        <button class="btn btn-danger btn-sm" (click)="delete(menu.id)">
+                            <i class="pe-7s-trash btn-icon-wrapper"></i></button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

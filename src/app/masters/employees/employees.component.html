@@ -1,0 +1,90 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">Employees</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">NAME*</label>
+                        <input type="text" class="w-100 form-control" formControlName="name">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please
+                            Enter Name</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">EMAIL*</label>
+                        <input type="text" class="w-100 form-control" formControlName="email">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.email.touched && formdata.controls.email.invalid">Please
+                            Enter Email</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">MOBILE NUMBER*</label>
+                        <input type="text" class="w-100 form-control" formControlName="mobileno">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.mobileno.touched && formdata.controls.mobileno.invalid">Please
+                            Enter Your Mobile
+                            Number</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">ADDRESS*</label>
+                        <input type="text" class="w-100 form-control" formControlName="address">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.address.touched && formdata.controls.address.invalid">Please Enter
+                            Your
+                            Address</span><br>
+                    </div>
+                    <div class="col-lg-2 ml-4">
+                        <label>IS ACTIVE?</label><br>
+                        <label class="switch">
+                            <input formControlName="isactive" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="submit" value="SAVE" class="btn btn-success text-capitalize" [disabled]="!formdata.valid">
+                <input type="reset" value="CLEAR" (click)="clear()" class="btn btn-info text-capitalize mx-2"
+                    [disabled]="!formdata.valid">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="tabs-animation">
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <table style="width: 100%;" class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th>Address</th>
+                        <th>Is Acitve?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of employees; let i = index">
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" (click)="delete(emp.id)">DELETE</button>
+                            <button type="button" class="btn btn-success mx-2 btn-sm"
+                                (click)="edit(emp.id)">EDIT</button>
+                        </td>
+                        <td>{{i + 1}}</td>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>{{emp.mobileno}}</td>
+                        <td>{{emp.address}}</td>
+                        <td>{{emp.isactive}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

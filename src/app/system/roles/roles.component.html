@@ -1,0 +1,50 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">Roles</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <label class="form-label fs-6">NAME*</label>
+                <input type="text" class="w-100 form-control" formControlName="name">
+                <span class="text-danger"
+                    *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please Enter
+                    Name</span><br>
+                <input type="submit" value="SAVE" class="btn btn-success text-capitalize" [disabled]="!formdata.valid">
+                <input type="reset" value="CLEAR" (click)="clear()" class="btn btn-info text-capitalize mx-2"
+                    [disabled]="!formdata.valid">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="tabs-animation">
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <table class="mb-0 table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width:120px;">ACTION</th>
+                        <th class="text-right" style="width:80px;">NO</th>
+                        <th>NAME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let role of roles; let i=index">
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm mr-2" (click)="edit(role.id)"><i
+                                    class="pe-7s-tools btn-icon-wrapper"></i></button>
+                            <button class="btn btn-danger btn-sm" (click)="delete(role.id)">
+                                <i class="pe-7s-trash btn-icon-wrapper"></i></button>
+
+                        </td>
+                        <td class="text-right">{{i + 1}}</td>
+                        <td>{{role.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">Role-Menu-Mapping</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <label class="form-label fs-6">ROLE*</label>
+                    <select class="form-select" [(ngModel)]="roleid" (change)="roleChanged()">
+                        <option value="0">Select Role</option>
+                        <option *ngFor="let role of roles" value="{{role.id}}">{{role.name}}</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="tabs-animation">
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li *ngFor="let menu of menus;">
+                            <label class="switch">
+                                <input type="checkbox" [checked]="menu.rolemenuid != 0"
+                                    (change)="changeMenu(menu.rolemenuid, menu.id, $event)">
+                                <span class="slider round"></span>
+                            </label>{{ menu.title }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

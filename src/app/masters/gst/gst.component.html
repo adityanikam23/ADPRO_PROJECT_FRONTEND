@@ -1,0 +1,97 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">GST</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">TITLE*</label>
+                        <input type="text" class="w-100 form-control" formControlName="title">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.title.touched && formdata.controls.title.invalid">Please
+                            Enter Title</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">C-GST*</label>
+                        <input type="text" class="w-100 form-control" formControlName="cgst">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.cgst.touched && formdata.controls.cgst.invalid">Please
+                            Enter C-GST</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">S-GST*</label>
+                        <input type="text" class="w-100 form-control" formControlName="sgst">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.sgst.touched && formdata.controls.sgst.invalid">Please
+                            Enter S-GST</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">I-GST*</label>
+                        <input type="text" class="w-100 form-control" formControlName="igst">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.igst.touched && formdata.controls.igst.invalid">Please Enter
+                            I-GST</span><br>
+                    </div>
+                    <div class="col-lg-2 ml-4">
+                        <label>STATUS</label><br>
+                        <label class="switch">
+                            <input formControlName="status" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">GSTCODE*</label>
+                        <input type="text" class="w-100 form-control" formControlName="gstcode">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.gstcode.touched && formdata.controls.gstcode.invalid">Please Enter
+                            GSTCODE</span><br>
+                    </div>
+                </div>
+                <input type="submit" value="SAVE" class="btn btn-success text-capitalize" [disabled]="!formdata.valid">
+                <input type="reset" value="CLEAR" (click)="clear()" class="btn btn-info text-capitalize mx-2"
+                    [disabled]="!formdata.valid">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="tabs-animation">
+    <div class="card mb-3 shadow">
+        <div class="card-body">
+            <table style="width: 100%;" class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>C-GST</th>
+                        <th>S-GST</th>
+                        <th>I-GST</th>
+                        <th>Status</th>
+                        <th>GSTCODE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let gst of gsties; let i = index">
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" (click)="delete(gst.id)">DELETE</button>
+                            <button type="button" class="btn btn-success mx-2 btn-sm"
+                                (click)="edit(gst.id)">EDIT</button>
+                        </td>
+                        <td>{{i + 1}}</td>
+                        <td>{{gst.title}}</td>
+                        <td>{{gst.cgst}}</td>
+                        <td>{{gst.sgst}}</td>
+                        <td>{{gst.igst}}</td>
+                        <td>{{gst.status}}</td>
+                        <td>{{gst.gstcode}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

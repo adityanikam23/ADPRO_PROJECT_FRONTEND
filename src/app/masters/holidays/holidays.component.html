@@ -1,0 +1,124 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="fs-3">Holidays</div>
+        </div>
+    </div><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">HOLIDAY DATE*</label>
+                        <input type="datetime-local" class="w-100 form-control" formControlName="holidaydate">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.holidaydate.touched && formdata.controls.holidaydate.invalid">Please
+                            Enter Holiday Date</span><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fs-6">DETAILS*</label>
+                        <input type="text" class="w-100 form-control" formControlName="details">
+                        <span class="text-danger"
+                            *ngIf="formdata.controls.details.touched && formdata.controls.details.invalid">Please
+                            Enter Details</span><br>
+                    </div>
+                    <div class="col-lg-2 ml-4">
+                        <label>EVERY YEAR*</label><br>
+                        <label class="switch">
+                            <input formControlName="everyyear" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="submit" value="SAVE" class="btn btn-success text-capitalize" [disabled]="!formdata.valid">
+                <input type="reset" value="CLEAR" (click)="clear()" class="btn btn-info text-capitalize mx-2"
+                    [disabled]="!formdata.valid">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <select class="form-select" [(ngModel)]="selectedMonth" (change)="loadCalendar()">
+                    <option *ngFor="let month of api.months;let i = index;" value="{{ i + 1 }}">{{ month }}</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <select class="form-select" [(ngModel)]="selectedYear" (change)="loadCalendar()">
+                    <option *ngFor="let year of api.getyears();let i = index;" value="{{ year }}">{{ year }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                <table class="mb-0 table table-bordered table-hover">
+                    <tr>
+                        <th style="width:100px;" class="text-center" *ngFor="let day of api.weekdays;">
+                            {{day}}
+                        </th>
+                    </tr>
+                    <tr *ngFor="let week of monthCalendar; let i = index;">
+                        <td class="text-center" style="height:100px;position: relative;"
+                            *ngFor="let day of week; let j = index;">
+                            <span style="position: absolute; top:1px;left:1px;" *ngIf="day != 0"> {{ day }}</span>
+                            <button type="button" class="btn btn-warning" *ngIf="dateRecords[i][j] != 0"
+                                (click)="openmodel()">Reasons:{{dateRecords[i][j]}}</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal mt-5" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Holidays on {{ selectedDate | date:"dd/MM/yyyy" }}
+                </h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card mb-3 shadow">
+                    <div class="card-body">
+                        <table style="width: 100%;" class="table table-hover table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Actions</th>
+                                    <th>No</th>
+                                    <th>Date</th>
+                                    <th>Details</th>
+                                    <th>Every Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let holiday of holidays; let i = index">
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            (click)="delete(holiday.id)">DELETE</button>
+                                        <button type="button" class="btn btn-success mx-2 btn-sm"
+                                            (click)="edit(holiday.id)">EDIT</button>
+                                    </td>
+                                    <td>{{i + 1}}</td>
+                                    <td>{{holiday.holidaydate | date : "dd/MM/yyyy"}}</td>
+                                    <td>{{holiday.details}}</td>
+                                    <td>{{holiday.everyyear}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
